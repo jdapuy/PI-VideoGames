@@ -150,14 +150,15 @@ __Ruta de creación de videojuegos__: debe contener
 
 El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
 
-- [ ] Videojuego con las siguientes propiedades:
+- [x] Videojuego con las siguientes propiedades:
   - ID: * No puede ser un ID de un videojuego ya existente en la API rawg
   - Nombre *
   - Descripción *
   - Fecha de lanzamiento
   - Rating
   - Plataformas *
-- [ ] Genero con las siguientes propiedades:
+  -cosnsultando IMG_BACKGROUND con corrector
+- [x] Genero con las siguientes propiedades:
   - ID
   - Nombre
 
@@ -171,7 +172,7 @@ Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
 
 __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
 
-- [ ] __GET /videogames__:
+- [faltan los generos de los VG] __GET /videogames__:
   - Obtener un listado de los videojuegos
   - Debe devolver solo los datos necesarios para la ruta principal
 - [ ] __GET /videogames?name="..."__:
@@ -184,7 +185,7 @@ __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y pagin
 - [ ] __POST /videogames__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
   - Crea un videojuego en la base de datos, relacionado a sus géneros.
-- [ ] __GET /genres__:
+- [x] __GET /genres__: consultando precarga
   - Obtener todos los tipos de géneros de videojuegos posibles
   - En una primera instancia deberán traerlos desde rawg y guardarlos en su propia base de datos y luego ya utilizarlos desde allí
 
