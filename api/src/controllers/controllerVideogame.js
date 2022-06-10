@@ -1,60 +1,52 @@
+const { Videogame, Genre } = require("../db.js");
 //funciones
-require('dotenv').config();
 const {
-    API_KEY
-  } = process.env;
-const { Sequelize, Op, Model, DataTypes } = require("sequelize");
-const { Videogame, Genre } = require('../db.js');
+  videogamesAPI,
+  videogamesBD,
+  videogamesAPIId,
+  videogamesBDId,
+} = require("./tools");
 
-const axios = require("axios")
-//sequelize para las consultas en la base de datos
+//__GET /videogames__:
+const getVideogames = async (req, res, next) => {
+  const { name } = req.query;
 
-const genresByNames = (genres)=>{
-    const genresNames = genres.map((g)=> g.name)
-    return genresNames;
-}
-
-const videogamesAPI = async ()=>{ // Envio todos los viedojuegos filtados por id,name,backgroun y generos de la API
-    const vgAPI = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`);
-    let videoGamesArray = vgAPI.data.results.map((vg)=>{
-        return {
-            id: vg.id,
-            name: vg.name,
-            background_image: vg.background_image,
-            genres:genresByNames(vg.genres),
-        }
-    })
-    return videoGamesArray;
-}
-
-const videogamesBD = async ()=>{ //trae los videojuegos de la base de datos filtrados por id,name y imagen
-    const infoBD = await Videogame.findAll();
-    let videoGamesArray = infoBD.map((vg)=>{
-        return {
-            id: vg.id,
-            name: vg.name,
-            background_image: vg.background_image
-        }
-    })
-    return videoGamesArray;
-}
-
-const getVideogames = async (req,res,next) => {
-    try {
-        let gamesAPI = await videogamesAPI();
-        let gamesBD = await videogamesBD();
-       
-        if(gamesBD.length < 1){
-            res.send(gamesAPI)
-        }else{
-            const mergeAPI_BD = [...gamesAPI, ...gamesBD];
-            res.send(mergeAPI_BD)
-        }
-        
-    } catch (error) {
-        next(error) //no se rompe toda la aplicacion con un error, continua y muestra el error
+  try {
+    let gamesAPI = await videogamesAPI(name);
+    let gamesBD = await videogamesBD(name);
+    if (gamesBD.length < 1 && gamesAPI.length < 1) {
+      res.status(404).send("videogames solicitados no encontrados");
+    } else {
+      const mergeAPI_BD = [...gamesAPI, ...gamesBD];
+      if (name) {
+        res.send(mergeAPI_BD.slice(0, 15));
+      } else {
+        res.send(mergeAPI_BD);
+      }
     }
+  } catch (error) {
+    next(error); //no se rompe toda la aplicacion con un error, continua y muestra el error
+  }
+};
+////__GET /videogames/:id
+const getVideogamesId = async (req, res, next) => {
+  const { idVideogame } = req.params;
 
+  try {
+
+    let gameAPI = await videogamesAPIId(idVideogame);
+    let gamesBD = await videogamesBDId(idVideogame);
+    let id = parseInt(idVideogame)
+    if (gameAPI && !isNaN(id) ) { //typeof valida que solo sean numbers, no se ingresan names
+      return res.send(gameAPI);
+    } else if (gamesBD) {
+      return res.send(gamesBD);
+    } else {
+      res.status(404).send(`Videogame id ${idVideogame} no encontrado`);
+    }
+  } catch (error) {
+    next(error); //no se rompe toda la aplicacion con un error, continua y muestra el error
+  }
 };
 
 //COMO DEBE VENIR EL VIDEOGAME POR BODY del formulario
@@ -70,28 +62,35 @@ const getVideogames = async (req,res,next) => {
 //     "genres":["Action","Indie","Arcade"]
 // }
 
-const crearVG = async(req,res,next)=>{
-    const {videogame, genres} = req.body;
-    if(videogame){ //si videogame existe
-        if(!videogame.name|| !videogame.description || videogame.platforms.length<1){
-            res.send("Propiedades faltantes")
-        }
-        try {
-            const newVideoGame = await Videogame.create(videogame);
-            genres.forEach(async(genre) => { //recorre el array de generos del form
-                let genreExist = await Genre.findOne({ where: { name: genre } });
-                if(genreExist){//si en bd existe el genero
-                    console.log(genreExist.dataValues.id);
-                    let idGenre = genreExist.dataValues.id //sacamos el id del genero encontrado
-                 await newVideoGame.addGenre(idGenre) //se le agrega el id del genero a videogame
-                }else{res.send(`genero: ${genre} inexistente`)}
-            });
-            res.send("Se ha creado un videogame");
-        } catch (error) {
-            next(error)
-        }
-    }
-    
-}
+const crearVG = async (req, res, next) => {
+  const { videogame, genres } = req.body;
 
-module.exports = { getVideogames, crearVG };
+  if (videogame) {
+    //si videogame existe
+    if (
+      !videogame.name ||
+      !videogame.description ||
+      videogame.platforms.length < 1
+    ) {
+      res.send("Propiedades faltantes");
+    }
+ 
+    try {
+      const newVideoGame = await Videogame.create(videogame);
+
+      let genresBD = await Genre.findAll({ where: { name: genres } });
+      let genresValidos = genresBD.map(g=>genres.includes(g.dataValues.name)); //crea una array con trues si existen los generos recibidos
+      if(genresValidos.length == genres.length){ //si hay algun genre invalido no ingresa
+        await newVideoGame.addGenre(genresBD);
+        res.send("Se ha creado un videogame");
+      }else{
+        res.send("generos ingresados invalidos");
+      }
+    
+    } catch (error) {
+      next(error);
+    }
+  }
+};
+
+module.exports = { getVideogames, crearVG, getVideogamesId };

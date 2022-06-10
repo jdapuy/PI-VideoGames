@@ -172,17 +172,17 @@ Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
 
 __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
 
-- [faltan los generos de los VG] __GET /videogames__:
+- [x] __GET /videogames__:
   - Obtener un listado de los videojuegos
   - Debe devolver solo los datos necesarios para la ruta principal
-- [ ] __GET /videogames?name="..."__:
+- [x] __GET /videogames?name="..."__:
   - Obtener un listado de las primeros 15 videojuegos que contengan la palabra ingresada como query parameter
   - Si no existe ningún videojuego mostrar un mensaje adecuado
-- [ ] __GET /videogame/{idVideogame}__:
+- [x] __GET /videogame/{idVideogame}__:
   - Obtener el detalle de un videojuego en particular
   - Debe traer solo los datos pedidos en la ruta de detalle de videojuego
   - Incluir los géneros asociados
-- [ ] __POST /videogames__:
+- [x] __POST /videogames__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
   - Crea un videojuego en la base de datos, relacionado a sus géneros.
 - [x] __GET /genres__: consultando precarga
