@@ -1,9 +1,18 @@
-import './App.css';
+import "./App.css";
+import { Route } from "react-router-dom";
+import { Videogames } from "./components/Videogames/Videogames";
+import {LandingPage} from "./components/LandingPage/LandingPage"
+import {VideogameDetail} from "./components/VideogameDetail/VideogameDetail"
+import { CreateVideogame } from "./components/CreateVideogame/CreateVideogame";
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Videogames</h1>
+     
+      <Route exact path={"/"} component={LandingPage} />
+      <Route exact path={"/home"} component={Videogames} />
+      <Route exact path={"/home/:videogameId"} component={VideogameDetail} />
+      <Route exact path={"/home/create"} component={CreateVideogame}/>
     </div>
   );
 }

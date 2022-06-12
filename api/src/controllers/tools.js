@@ -10,27 +10,29 @@ const consultaAPI = async () => {
   let api;
   let url = `https://api.rawg.io/api/games?key=${API_KEY}`;
 
-  // for (let i = 1; i < 6; i++) {
-  //   api = await axios.get(url);
-  //   url = api.data.next;
-  //   games = [...games, ...api.data.results];
-  // }
-  // console.log(`Se han cargado los ${games.length} videogames`);
-  // return games;
+  for (let i = 1; i < 6; i++) {
+    api = await axios.get(url);
+    url = api.data.next;
+    games = [...games, ...api.data.results];
+  }
+  console.log(`Se han cargado los ${games.length} videogames`);
+  return games;
 
   // //creacion de endpoints //INTENTO CON PROMESAS CONSULTAR
-   for(let i = 1; i<6; i++){
-    url = `https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`
-    endpoints = [...endpoints,url]
-  }
+  //  for(let i = 1; i<6; i++){
+  //   url = `https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`
+  //   endpoints = [...endpoints,url]
+  // }
 
-  let promArray =endpoints.map(async(endpoint) => await axios.get(endpoint)
-  .then((response)=>response.data)
-  .then(data=>data.results))
+  // let promArray =endpoints.map((endpoint) =>  axios.get(endpoint)
+  // .then((response)=>response.data)
+  // .then(data=>{  console.log(data.results.length); return data.results}))
 
-  let promesa = Promise.all(promArray)
-  .then((games)=> {games; return  games[0]})
-  return promesa;
+  // let getGames = Promise.all(promArray)
+  // .then((games)=> {console.log(games[0].length); return  games[0]})
+  // .catch(reason=>console.log(reason))
+  
+  // return getGames;
 
 
 };
