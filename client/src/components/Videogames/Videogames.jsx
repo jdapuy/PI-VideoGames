@@ -6,9 +6,9 @@ export const Videogames = (props) => {
     
     const dispatch = useDispatch();
     const videogames = useSelector((state)=>state.videogames)
-
+ 
     useEffect(() => {
-     
+   
      dispatch(getAllVideogames())
     }, [dispatch])
     

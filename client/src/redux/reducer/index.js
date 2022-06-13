@@ -1,7 +1,6 @@
 // Importa las actions types que necesites acá:
 import {
   GET_ALL_VIDEOGAMES,
-  CREATE_VIDEOGAME,
   GET_VIDEOGAME,
   GET_VIDEOGAMES_NAME,
   GET_ALL_GENRES,

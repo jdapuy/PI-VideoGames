@@ -1,11 +1,10 @@
 import axios from "axios";
 
 export const GET_ALL_VIDEOGAMES = "GET_ALL_VIDEOGAMES";
-export const CREATE_VIDEOGAME = "CREATE_VIDEOGAME";
 export const GET_VIDEOGAME = "GET_VIDEOGAME";
 export const GET_VIDEOGAMES_NAME = "GET_VIDEOGAMES_NAME";
 export const GET_ALL_GENRES = "GET_ALL_GENRES";
-export const POST_GENRES = "POST_GENRES"; 
+
 
 
 const urlVG = "http://localhost:3001/videogames";
@@ -30,12 +29,10 @@ export const getVideogamesName = (name) => (dispatch) => {
          type: GET_VIDEOGAMES_NAME, payload:  response.data }));
 };
 
-export const postVideogame = (videogame) => (dispatch) => {
-    return axios.post(urlVG,videogame)
-};
+
 
 export const getAllGenres = () => (dispatch) => {
     return axios.get(urlG)
     .then((response) => dispatch({
-        type: GET_ALL_VIDEOGAMES, payload:  response.data }));
+        type: GET_ALL_GENRES, payload:  response.data }));
 };

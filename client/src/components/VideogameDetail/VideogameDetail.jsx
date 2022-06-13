@@ -12,7 +12,6 @@ export const VideogameDetail = (props) => {
         dispatch(getVideogame(videogameId))
     },[dispatch,videogameId])
     
-    console.log(videogame)
   return (
 
     <div>VideogameDetail
