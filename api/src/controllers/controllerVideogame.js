@@ -76,6 +76,9 @@ const crearVG = async (req, res, next) => {
     }
  
     try {
+      if(videogame.background_image===null){
+        videogame.background_image = "https://blackmantkd.com/wp-content/uploads/2017/04/default-image-620x600.jpg" //si el user no envia una img se le da una por defecto
+      }
       const newVideoGame = await Videogame.create(videogame);
 
       let genresBD = await Genre.findAll({ where: { name: genres } });

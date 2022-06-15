@@ -23,15 +23,15 @@ export function validate(input) {
   if (input.platforms.length === 0) {
     error.platforms = "Platforms is required";
   }
-  if (
-    !/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/.test(input.released)
+  if(
+    !/^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/.test(input.released) && input.released
   ) {
     error.released = "Invalid date format";
   }
-  if (!/^[1-5]$/.test(input.rating)) {
+  if (!/^[1-5]$/.test(input.rating) && input.rating) {
     error.rating = "Enter a number from 1 to 5";
   }
-  if (!/.(gif|jpeg|jpg|png)$/i.test(input.background_image)) {
+  if (!/.(gif|jpeg|jpg|png)$/i.test(input.background_image) && input.background_image) {
     error.background_image = "Enter a correct image format (gif,jpeg,jpg,png)";
   }
   if (input.genres.length === 0) {
@@ -43,7 +43,23 @@ export function validate(input) {
 export const CreateVideogame = () => {
   const dispatch = useDispatch();
   const genresApi = useSelector((state) => state.genres);
-  const [error, setError] = useState({});
+  const [error, setError] = useState({
+    name:"Name is required",
+    description: "Name is required",
+    platforms: "Platforms is required",
+    genres: "Genres is required"
+  });
+
+  const [vgInput, setVgInput] = useState({
+    name: null,
+    description: null,
+    released: null,
+    rating: null,
+    platforms: [],
+    background_image: null,
+    genres: [],
+  });
+
   const platformsApi = [
     "PC",
     "PlayStation",
@@ -66,16 +82,7 @@ export const CreateVideogame = () => {
     dispatch(getAllGenres());
   }, [dispatch]);
 
-  const [vgInput, setVgInput] = useState({
-    name: "",
-    description: "",
-    released: "",
-    rating: "",
-    platforms: [],
-    background_image: "",
-    genres: [],
-  });
-
+ 
 
   //////////////manejadores de inputs y botones
   const handleInputChangeVG = function (e) {
@@ -91,7 +98,7 @@ export const CreateVideogame = () => {
         })
       : setVgInput({
           ...vgInput,
-          [e.target.name]: e.target.value,
+          [e.target.name]: e.target.value===""?null:e.target.value, //si se escribe y se borra en input, se pasa el dato de null a ""("" = errores)
         });
 
     let objError = validate({ ...vgInput, [e.target.name]: e.target.value });
@@ -166,7 +173,7 @@ export const CreateVideogame = () => {
             Platforms is required
           </option>
           {platformsApi.map((g) => {
-            return <option value={g}>{g}</option>;
+            return <option disabled={vgInput.platforms.includes(g)} value={g}>{g}</option>;//se deshabilita la opt si ya seleccionaste dicha platform
           })}
         </select>
         {error.platforms && <p>{error.platforms}</p>}
@@ -188,8 +195,8 @@ export const CreateVideogame = () => {
             Genres is required
           </option>
           {genresApi?.map((g) => {
-            return (
-              <option value={g.name} key={g.id}>
+            return (//se deshabilita la opt si ya seleccionaste dicha genero
+              <option disabled={vgInput.genres.includes(g)} value={g.name} key={g.id}> 
                 {g.name}
               </option>
             );
@@ -197,7 +204,8 @@ export const CreateVideogame = () => {
         </select>{" "}
         {error.genres && <p>{error.genres}</p>}
         {/*si el estado error esta vacio activa el boton create*/}
-        {Object.keys(error).length > 0 ? (
+        
+        {Object.keys(error).length > 0? (
           <button type="submit" disabled>
             Create
           </button>
