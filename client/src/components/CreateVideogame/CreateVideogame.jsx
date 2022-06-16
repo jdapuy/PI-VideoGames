@@ -213,7 +213,7 @@ export const CreateVideogame = () => {
           <button type="submit">Create</button>
         )}
       </form>
-
+          
       {/*///////////////////Platforms y genres agregados por el user */}
       <section>
         <div>

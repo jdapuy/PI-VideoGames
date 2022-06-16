@@ -17,7 +17,8 @@ const getVideogames = async (req, res, next) => {
     if (gamesBD.length < 1 && gamesAPI.length < 1) {
       res.status(404).send("videogames solicitados no encontrados");
     } else {
-      const mergeAPI_BD = [...gamesAPI, ...gamesBD];
+      const mergeAPI_BD = gamesBD.concat(gamesAPI);
+      //const mergeAPI_BD = [...gamesAPI, ...gamesBD];
       if (name) {
         res.send(mergeAPI_BD.slice(0, 15));
       } else {

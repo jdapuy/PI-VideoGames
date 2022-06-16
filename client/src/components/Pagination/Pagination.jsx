@@ -29,7 +29,7 @@ export const Pagination = ({page,setPage,perPage,setPerPage,max,input,setInput})
                 alert(`Page number ${numPagIns} doesnt exist`)
                
             }else{
-                setPage(numPagIns)
+                setPage(input)
             }
         }
     }
