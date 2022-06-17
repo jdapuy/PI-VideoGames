@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   getVideogamesAsc,
@@ -11,7 +10,6 @@ import {
 export const Order = ({ setPage,setInput,setOrder }) => {
   const dispatch = useDispatch();
   
-  // const videogames = useSelector((state)=>state.videogames)
   const handleOnClick = (e) => {
    e.preventDefault();
     

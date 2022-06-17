@@ -9,6 +9,7 @@ export const Videogames = (props) => {
     
     const dispatch = useDispatch();
     const videogames = useSelector((state)=>state.videogames)
+    ///////estado para renderizar orders////
     const [order, setOrder] = useState();
     ///////estados de paginacion///////////
     const [page,setPage]= useState(1);
@@ -18,7 +19,7 @@ export const Videogames = (props) => {
     //////////////////////////////////////
     useEffect(() => {
 
-    }, [dispatch,videogames,order])//DEPENDE DEL ORDENAMIENTO, SI CAMBIA SE ACTULIZA EL ESTADO
+    }, [videogames,dispatch,order])//DEPENDE DEL ORDENAMIENTO, SI CAMBIA SE ACTULIZA EL ESTADO
     
 
   return (

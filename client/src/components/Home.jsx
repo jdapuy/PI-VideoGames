@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllVideogames } from '../redux/actions'
+import { getAllGenres, getAllVideogames } from '../redux/actions'
 import { Videogames } from './Videogames/Videogames';
 
 
 export const Home = () => {
-    //const videogames = useSelector((state)=>state.videogames)
+    const loading = useSelector((state)=>state.loading)
     const dispatch = useDispatch();
     useEffect(() => {
         
-        
+        dispatch(getAllGenres())
         dispatch(getAllVideogames())
       }, [dispatch])
   
@@ -17,6 +17,9 @@ export const Home = () => {
   
     return (
     <div>home
+      <div>
+        {loading ? <img src='https://i.gifer.com/XOsX.gif' alt='Loading'/>:console.log("cargado")}
+      </div>
         <Videogames/>
     </div>
   )
