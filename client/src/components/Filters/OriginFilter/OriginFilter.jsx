@@ -17,10 +17,11 @@ export const OriginFilter = ({setInput,setPage,setOrder}) => {
   }
 
   return (
-    <div>OriginFilter
+    <div>
+      <h2>Origin</h2>
       <div>
-       <button value="Created" onClick={(e) => handleOnClick(e)}>Created</button>
-       <button value="API" onClick={(e) => handleOnClick(e)}>API</button>
+       <button className="button" value="Created" onClick={(e) => handleOnClick(e)}>Created</button>
+       <button className="button"value="API" onClick={(e) => handleOnClick(e)}>API</button>
       </div>
     </div>
   )

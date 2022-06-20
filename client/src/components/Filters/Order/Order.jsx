@@ -34,20 +34,17 @@ export const Order = ({ setPage,setInput,setOrder }) => {
 
   return (
     <div>
-      Order
-      <h1>Order</h1>
-      <h2>Name</h2>
-      <button name="ABC" onClick={(e) => handleOnClick(e)}>
+      <h2>Order</h2>
+      <button className="button" name="ABC" onClick={(e) => handleOnClick(e)}>
         ABC...
       </button>
-      <button name="ZYX" onClick={(e) => handleOnClick(e)}>
+      <button className="button" name="ZYX" onClick={(e) => handleOnClick(e)}>
         ZYX...
       </button>
-      <h2>Rating</h2>
-      <button name="+Rating-" onClick={(e) => handleOnClick(e)}>
+      <button className="button" name="+Rating-" onClick={(e) => handleOnClick(e)}>
         +Rating-
       </button>
-      <button name="-Rating+" onClick={(e) => handleOnClick(e)}>
+      <button className="button" name="-Rating+" onClick={(e) => handleOnClick(e)}>
         -Rating+
       </button>
     </div>

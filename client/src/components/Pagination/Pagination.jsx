@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "./Pagination.css"
 
 export const Pagination = ({page,setPage,perPage,setPerPage,max,input,setInput}) => {
    
@@ -42,9 +42,9 @@ export const Pagination = ({page,setPage,perPage,setPerPage,max,input,setInput})
 
 
   return (
-    <div>
-        <button disabled={page === 1 || page < 1} onClick={(e)=>handlePrev(e)}>prev</button>
-        <input 
+    <div className='containerPage'>
+        <button className='buttonPage' disabled={page === 1 || page < 1} onClick={(e)=>handlePrev(e)}>prev</button>
+        <input className='inputPage'
         
         onChange={e=>onChange(e)}
         onKeyDown={e=>onEnterDown(e)}
@@ -52,8 +52,8 @@ export const Pagination = ({page,setPage,perPage,setPerPage,max,input,setInput})
         autoComplete='off'
         value={input}
         />
-        <p>{`de ${Math.ceil(max)} pages`}</p>
-        <button disabled={page === Math.ceil(max) || page > Math.ceil(max)} onClick={(e)=>handleNext(e)}>next</button>
+        <p className='descPage'>{`/   ${Math.ceil(max)} pages`}</p>
+        <button className='buttonPage' disabled={page === Math.ceil(max) || page > Math.ceil(max)} onClick={(e)=>handleNext(e)}>next</button>
     </div>
   )
 }

@@ -4,6 +4,7 @@ import { getAllVideogames } from "../../redux/actions";
 import { GenreFilter } from "./GenreFilter/GenreFilter";
 import { Order } from "./Order/Order";
 import { OriginFilter } from "./OriginFilter/OriginFilter";
+import "./Filters.css";
 
 export const Filters = ({setPage,setInput,setOrder}) => {
   const dispatch = useDispatch();  
@@ -16,18 +17,22 @@ export const Filters = ({setPage,setInput,setOrder}) => {
   }
 
   return (
-    <div>
-      Filters
+    <div className="container">
       <div>
-        <button value={"noFilters"} onClick={(e)=> handleOnClick(e)}>Refresh Filters</button>
+        <button className="button" value={"noFilters"} onClick={(e)=> handleOnClick(e)}>
+        <span className="box">
+        Refresh Filters
+    </span>
+          </button>
+          
       </div>
-      <div>
+      <div className="order">
         <Order setPage={setPage}  setInput={setInput} setOrder={setOrder}/>
       </div>
-      <div>
+      <div className="genreFilter">
         <GenreFilter setPage={setPage}  setInput={setInput}  setOrder={setOrder}/>
       </div>
-      <div>
+      <div className="originFilter">
         <OriginFilter setPage={setPage}  setInput={setInput}  setOrder={setOrder}/>
       </div>
       <div></div>

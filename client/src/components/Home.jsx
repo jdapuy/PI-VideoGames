@@ -5,7 +5,7 @@ import { Videogames } from './Videogames/Videogames';
 
 
 export const Home = () => {
-    const loading = useSelector((state)=>state.loading)
+
     const dispatch = useDispatch();
     useEffect(() => {
         
@@ -16,10 +16,7 @@ export const Home = () => {
   
   
     return (
-    <div>home
-      <div>
-        {loading ? <img src='https://i.gifer.com/XOsX.gif' alt='Loading'/>:console.log("cargado")}
-      </div>
+    <div>
         <Videogames/>
     </div>
   )

@@ -21,12 +21,14 @@ export const GenreFilter = ({setPage,setInput,setOrder}) => {
   }
 
   return (
-    <div>GenreFilter
-     
+    <div>
+     <h2>Genres</h2>
       <div>
         {genres?.map((g)=>
           
-          <button key={g.id} value={g.name} onClick={(e) => handleOnClick(e)}>{g.name}</button>
+          <button className="button" key={g.id} value={g.name} onClick={(e) => handleOnClick(e)}>
+            {g.name}
+            </button>
         )}
       </div>
     </div>
