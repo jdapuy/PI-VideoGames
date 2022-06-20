@@ -1,0 +1,95 @@
+/* From uiverse.io by @alexruix */
+/* From uiverse.io by @alexruix */
+
+.containerPage{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.descPage{
+    color: white;
+}
+
+.inputPage {
+    line-height: 28px;
+    width: 20px;
+    font-size: 16px;
+    border: 2px solid transparent;
+    border-bottom-color: white;
+    padding: .2rem 1rem;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+   }
+   
+   .inputPage:focus, input:hover {
+    outline: none;
+    padding: .2rem 1rem;
+    border-radius: 1rem;
+    border-color: #7a9cc6;
+   }
+   
+   .inputPage::placeholder {
+    color: #777;
+   }
+   
+   .inputPage:focus::placeholder {
+    opacity: 0;
+    transition: opacity .3s;
+   }
+
+/* //////////////////////button//////// */
+   /* From uiverse.io by @Custyyyy */
+.buttonPage {
+    margin: 10px;
+    align-items: center;
+    appearance: none;
+    background-color: transparent;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.2) 0 2px 4px,rgba(45, 35, 66, 0.15) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 30px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding: 8px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 15px;
+   }
+   
+   .buttonPage:focus {
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+   }
+   
+   .buttonPage:hover {
+    box-shadow: rgba(45, 35, 66, 0.3) 0 4px 8px, rgba(45, 35, 66, 0.2) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+   }
+   
+   .buttonPage:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+   }
+
+   .buttonPage:disabled {
+    cursor: auto;
+    color: gray;
+    background-color: transparent;
+   }

@@ -1,0 +1,203 @@
+.createContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    }
+
+.navCreate{
+    position: fixed;
+}
+
+.createContainer {  
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    
+    align-self: center;
+    margin: 25%;
+    margin-top: 10%;
+    justify-content: center;
+    width: 50%;
+    height: 60%;
+    position:absolute;
+
+    background:  linear-gradient(to right bottom, rgba(255, 255, 255, 0.5),rgba(255, 255, 255, 0.1));
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);;
+    border-radius: 20px;
+    border-style:solid;
+}
+
+.cardsAddedContainer{ grid-area: 1 / 1 / 5 / 2;
+    height: 100%;
+ 
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.132),rgba(255, 255, 255, 0.1));
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.243);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);;
+    border-radius: 20px;
+   
+ 
+  
+    
+}
+
+.formContainer{grid-area: 1 / 2 / 5 / 6;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    margin-top: 5%;
+   display: flex;
+flex-direction: column;
+   justify-content: center;
+   align-items: center;
+    font-size: 16px;
+    color: aliceblue;
+}
+
+.formItem{
+    width: 80px;
+    height: 60px;
+    position:relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.platfomsContainer{
+    font-size: 18px;
+    color: aliceblue;
+    margin-bottom: 2.5%;
+    height: 50%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.genresContainer{
+    font-size: 18px;
+    color: aliceblue;
+    margin-top: 2.5%;
+    height: 50%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* //////////////cards////////// */
+.CardCreatedContainer{
+    border-style: solid;
+    border-color: rgb(206, 206, 206);
+    margin: 5%;
+    width: 75%;
+    height: 35px;
+    margin: 10px;    
+    display: flex;
+    flex-direction: row-reverse;
+
+    justify-content: space-between;
+}
+
+.headercardCreated{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.bodyCardCreated{
+    align-self: center;
+    margin-left: 10%;
+    width: auto;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.cardCreatedButton{
+    align-self: flex-end;
+    background-color: red;
+    border-color: black;
+    color: white;
+ }
+
+
+.danger{
+    border-color: rgb(255, 116, 116);;
+}
+ 
+.pError{
+    color: rgb(255, 116, 116);
+}
+
+/* From uiverse.io */
+.buttonCreate {
+    padding: 1em 2em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  
+  .buttonCreate:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  .buttonCreate:active {
+    transform: translateY(-1px);
+  }
+
+
+  .buttonCreate:disabled {
+    padding: 1em 2em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .buttonCreate:active:disabled {
+    transform: translateY(-1px);
+  }
+
+  .buttonCreate:hover:disabled {
+    background-color: #c42323;
+    box-shadow: 0px 15px 20px rgba(229, 46, 46, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
