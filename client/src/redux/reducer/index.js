@@ -86,7 +86,7 @@ const rootReducer = (state = initialState, action) => {
 
     case VIDEOGAMES_ORDER_DESC:
       const gamesRatingDesc = state.videogames.sort(function (b, a) {
-        return parseInt(a.rating) - parseInt(b.rating);
+        return parseFloat(a.rating) - parseFloat(b.rating);
       });
       return {
         ...state,
@@ -94,7 +94,7 @@ const rootReducer = (state = initialState, action) => {
       };
     case VIDEOGAMES_ORDER_ASC:
       const gamesRatingAsc = state.videogames.sort(function (a, b) {
-        return parseInt(a.rating) - parseInt(b.rating);
+        return parseFloat(a.rating) - parseFloat(b.rating);
       }); //se cambian a y b de orden
       return {
         ...state,
