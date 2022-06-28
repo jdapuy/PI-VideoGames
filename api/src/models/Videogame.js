@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
     },
     background_image: {
       type: DataTypes.STRING,
-      defaultValue: "https://blackmantkd.com/wp-content/uploads/2017/04/default-image-620x600.jpg" //poner una imagen default
+      defaultValue: "https://ih1.redbubble.net/image.820272375.3135/st,small,845x845-pad,1000x1000,f8f8f8.jpg" //poner una imagen default
     },
   });
 };

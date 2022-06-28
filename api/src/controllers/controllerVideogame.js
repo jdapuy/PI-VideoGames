@@ -67,7 +67,6 @@ const crearVG = async (req, res, next) => {
   const { videogame, genres } = req.body;
 
   if (videogame) {
-    //si videogame existe
     if (
       !videogame.name ||
       !videogame.description ||
@@ -78,7 +77,7 @@ const crearVG = async (req, res, next) => {
  
     try {
       if(videogame.background_image===null){
-        videogame.background_image = "https://blackmantkd.com/wp-content/uploads/2017/04/default-image-620x600.jpg" //si el user no envia una img se le da una por defecto
+        videogame.background_image = "https://ih1.redbubble.net/image.820272375.3135/st,small,845x845-pad,1000x1000,f8f8f8.jpg" 
       }
       const newVideoGame = await Videogame.create(videogame);
 

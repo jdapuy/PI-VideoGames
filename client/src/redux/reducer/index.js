@@ -13,6 +13,7 @@ import {
   VIDEOGAMES_BY_GENRE,
   VIDEOGAMES_BY_ORIGIN,
   LOADING,
+  CLEAR,
 } from "../actions";
 
 const initialState = {
@@ -132,6 +133,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         loading: true,
       };
+      case CLEAR:
+        return {
+          ...state,
+          videogame: {},
+        };
     default:
       return { ...state };
   }

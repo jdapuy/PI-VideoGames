@@ -2,8 +2,11 @@ import React from "react";
 import "./Nav.css"
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
+import { useLocation } from "react-router-dom"
 
-function Nav() {
+function Nav({setPage, setInput}) {
+
+  const location = useLocation();
   return (
     <nav>
       <div className="navBar">
@@ -18,9 +21,11 @@ function Nav() {
             <h2>Create</h2>
           </Link>
         </li>
-        <li>
-          <SearchBar className="itemNav" />
-        </li>
+       {location.pathname==="/home" &&
+ <li>
+ <SearchBar className="itemNav"  setPage={setPage} setInput={setInput}/>
+</li>
+       }
       </ul>
       </div>
     </nav>

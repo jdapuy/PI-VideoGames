@@ -1,17 +1,26 @@
 import React, { useState } from "react";
-import  { useDispatch, } from 'react-redux'
+import  { useDispatch, useSelector, } from 'react-redux'
 import { getVideogamesName } from "../../redux/actions";
 import "./SearchBar.css"
 import { useLocation } from "react-router-dom"
+import { useEffect } from "react";
 
 
-export default function SearchBar() {
+export default function SearchBar({setPage, setInput}) {
     const [inputVg,setInputVg] = useState("")
     const dispatch = useDispatch();
+    const videogames = useSelector((state) => state.videogames)
+
+    useEffect(()=>{
+      setInput(1);
+      setPage(1);
+    },[videogames,dispatch])
 
     const handleSubmit= function(e){
         e.preventDefault();
-        dispatch(getVideogamesName(inputVg))
+       
+      dispatch(getVideogamesName(inputVg))
+      
     }
 
     const handleOnChange=function(e){

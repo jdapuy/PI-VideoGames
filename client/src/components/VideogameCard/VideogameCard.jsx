@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./VideogameCard.css";
-export const VideogameCard = ({ id, name, background_image, genres }) => {
+export const VideogameCard = ({ id, name, background_image, genres, rating }) => {
   return (
     <div>
       
@@ -13,9 +13,9 @@ export const VideogameCard = ({ id, name, background_image, genres }) => {
           <div className="imageContainer">
             <img className="image" src={background_image} alt="img" />
           </div>
-
           <div className="genres">
             <h3>{genres.join(" ")}</h3>
+            <p>{rating}</p>
           </div>
         </div>
       </Link>

@@ -13,6 +13,7 @@ export const VIDEOGAMES_BY_GENRE = "VIDEOGAMES_BY_GENRE";
 export const VIDEOGAMES_BY_ORIGIN = "VIDEOGAMES_BY_ORIGIN";
 /////////////////////loading//////////
 export const LOADING = "LOADING";
+export const CLEAR = "CLEAR"
 
 
 const urlVG = "http://localhost:3001/videogames";
@@ -104,5 +105,11 @@ export const getVideogamesByOrigin = (origin) => {
 export const loading = () => {
   return {
     type: LOADING,
+  };
+};
+
+export const clearDetails = () => {
+  return {
+    type: CLEAR,
   };
 };

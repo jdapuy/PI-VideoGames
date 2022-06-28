@@ -22,7 +22,7 @@ export const Videogames = (props) => {
   return (
     <div className="parent">
       <div className="navContainer">
-        <Nav className="navContainer"/>
+        <Nav  className="navContainer" setPage={setPage} setInput={setInput}/>
       </div>
       <div className="menu">
         <Filters setPage={setPage} setInput={setInput} setOrder={setOrder} />
@@ -50,6 +50,7 @@ export const Videogames = (props) => {
                   key={vg.id}
                   id={vg.id}
                   name={vg.name}
+                  rating={vg.rating}
                   background_image={vg.background_image}
                   genres={vg.genres}
                 />

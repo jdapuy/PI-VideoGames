@@ -44,7 +44,7 @@ const videogamesAPI = async (name) => {
   if (name) {
     // si llega name por query
     let gamesFilter = vgAPI
-    .filter((vg) => vg.name.toLowerCase().includes(name.toLowerCase())) //el tolowercase lo uso para que sea case insensitive
+    .filter((vg) => vg.name.toLowerCase().includes(name.toLowerCase()))
       .map((vg) => {
         return {
           id: vg.id,
@@ -61,7 +61,7 @@ const videogamesAPI = async (name) => {
       return {
         id: vg.id,
         name: vg.name,
-        rating: vg.rating,//solo lo utilizo en la pag home para el ordenamiento
+        rating: vg.rating,
         background_image: vg.background_image,
         genres: vg.genres.map((g) => g.name),
       };
@@ -107,7 +107,7 @@ const videogamesBD = async (name) => {
     return {
       id: vg.id,
       name: vg.name,
-      rating: vg.rating,//solo lo utilizo en la pag home para el ordenamiento
+      rating: vg.rating,
       background_image: vg.background_image,
       genres: vg.genres.map((g) => g.name),
     };

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideogame } from "../../redux/actions/index";
+import { clearDetails, getVideogame } from "../../redux/actions/index";
 import star from "../../Images/Star.png";
 import banner from  "../../Images/banner.jpg";
 import "./VideogameDetail.css"
@@ -13,6 +13,9 @@ export const VideogameDetail = (props) => {
   const videogameId = props.match.params.videogameId;
   useEffect(() => {
     dispatch(getVideogame(videogameId));
+    return(()=>{
+      dispatch(clearDetails());
+    })
   }, [dispatch, videogameId]);
   
   let stars = [];
