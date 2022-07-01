@@ -15,7 +15,6 @@ const consultaAPI = async () => {
     url = api.data.next;
     games = [...games, ...api.data.results];
   }
-  console.log(`Se han cargado los ${games.length} videogames`);
   return games;
 
   // //creacion de endpoints //INTENTO CON PROMESAS CONSULTAR
@@ -26,11 +25,11 @@ const consultaAPI = async () => {
 
   // let promArray =endpoints.map((endpoint) =>  axios.get(endpoint)
   // .then((response)=>response.data)
-  // .then(data=>{  console.log(data.results.length); return data.results}))
+  // .then(data=>{  return data.results}))
 
   // let getGames = Promise.all(promArray)
-  // .then((games)=> {console.log(games[0].length); return  games[0]})
-  // .catch(reason=>console.log(reason))
+  // .then((games)=> { return  games[0]})
+  // .catch(reason=>)
   
   // return getGames;
 
@@ -135,10 +134,10 @@ const videogamesAPIId = async (idVideogame) => {
         genres: vgFound.genres.map((g) => g.name),
       };
     } else {
-      console.log(`id ${idVideogame} no encontrado en la API`);
+      throw new Error('no founded');
     }
   } catch (error) {
-    console.log(`id ${idVideogame} no encontrado en la API`);
+    throw new Error('no founded');
   }
 };
 
@@ -166,10 +165,10 @@ const videogamesBDId = async (idVideogame) => {
         genres: infoBD.genres.map((g) => g.name),
       };
     } else {
-      console.log(`id ${idVideogame} no encontrado en la Base de datos`);
+      throw new Error('no founded');
     }
   } catch (error) {
-    console.log(`id ${idVideogame} no encontrado en la Base de datos`);
+    throw new Error('no founded');
   }
 };
 

@@ -29,7 +29,7 @@ export const Videogames = (props) => {
       </div>
       <div className="banner"></div>
       <div className="content" >
-      {loading ? <img className="loading" src= "https://i.gifer.com/XwI4.gif" /*'https://i.gifer.com/XOsX.gif'*/ alt='Loading'/>:console.log("cargado")}
+      {loading ? <img className="loading" src= "https://i.gifer.com/XwI4.gif" /*'https://i.gifer.com/XOsX.gif'*/ alt='Loading'/>:<p></p>}
         <div className="pagination">
           <Pagination
             page={page}
