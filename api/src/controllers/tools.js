@@ -169,7 +169,7 @@ const videogamesBDId = async (idVideogame) => {
       console.log(`id ${idVideogame} no encontrado en la Base de datos`);
     }
   } catch (error) {
-    console.log(`id ${idVideogame} no encontrado en la Base de datos`);
+    console.log(`id ${idVideogame} no encontrado en la Base de datos`); //error
   }
 };
 
