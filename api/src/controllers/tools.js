@@ -165,10 +165,10 @@ const videogamesBDId = async (idVideogame) => {
         genres: infoBD.genres.map((g) => g.name),
       };
     } else {
-      throw new Error('no founded');
+      throw new Error('not founded');
     }
   } catch (error) {
-    throw new Error('no founded');
+    throw new Error('not founded');
   }
 };
 
