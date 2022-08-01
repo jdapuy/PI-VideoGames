@@ -120,7 +120,7 @@ export const CreateVideogame = () => {
   const handleSubmit = async function (e) {
     e.preventDefault();
     console.log("intentando hacer post");
-    await axios.post("http://localhost:3001/videogames", {
+    await axios.post("/videogames", {
       videogame: vgInput,
       genres: vgInput.genres,
     });

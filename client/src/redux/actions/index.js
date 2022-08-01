@@ -16,8 +16,8 @@ export const LOADING = "LOADING";
 export const CLEAR = "CLEAR"
 
 
-const urlVG = "http://localhost:3001/videogames";
-const urlG = "http://localhost:3001/genres";
+const urlVG = "/videogames";
+const urlG = "/genres";
 
 export const getAllVideogames = () => (dispatch) => {
   dispatch(loading())//se queda cargando hasta cumplir el get de axios
