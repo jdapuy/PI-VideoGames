@@ -16,7 +16,7 @@
 // ░░░░░██████░
 require('dotenv').config();
 const {
-    API_KEY,PORT
+    API_KEY,
   } = process.env;
 const server = require('./src/app.js');
 const { conn, Genre } = require('./src/db.js');
@@ -36,7 +36,7 @@ conn.sync({ force: true }).then(async() => {
   const genresLoaded = await Genre.bulkCreate(genresFormat);
   console.log("Se ha cargado los generos exitosamente")
  }
-  server.listen(PORT, () => {
+  server.listen(process.env.PORT, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
